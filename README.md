@@ -1,0 +1,1 @@
+The intention of StoryEngine is to be a powerful tool for creating branching storylines for javascript games. Look at the [TODO](TODO.md) to get a better idea of the current overarching progress.

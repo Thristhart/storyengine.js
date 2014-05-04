@@ -1,0 +1,6 @@
+- [ ] Story class that tracks Events
+- [ ] Events have triggers and prerequisites
+- [ ] Events have Conveyors that illustrate plot to the user
+- [ ] Conveyors can be in sequence or all at once, and have an optional duration
+- [ ] Tests and demos
+- [ ] Drag-and-drop UI for building stories
