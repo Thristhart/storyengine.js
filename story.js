@@ -4,7 +4,7 @@ var storyengine = storyengine || {};
   * @constructor
   */
 storyengine.Story = (function() {
-	var constructor = function(a) {
+  var constructor = function(a) {
     /** The events tracked by this Story
      * @type {Object.<string, storyengine.Event>}
      * @private
