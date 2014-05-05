@@ -25,7 +25,9 @@ storyengine.Story = (function() {
    * @param {storyengine.Event} event The event to be added
    */
   constructor.prototype.addEvent = function(event) {
-    // TODO: Ensure event is valid
+    if(!event.prerequisites) {
+      throw new storyengine.StoryInvalidEventException('Event must have prerequisites');
+    }
     // TODO: Add the event to internal list
   };
   
@@ -43,4 +45,14 @@ storyengine.Story = (function() {
   }
   
   return constructor;
+})();
+
+storyengine.StoryInvalidEventException = (function() {
+  var exception = function(message) {
+    this.message = message;
+  };
+  exception.prototype.toString = function() {
+    return message;
+  };
+  return exception;
 })();
