@@ -48,8 +48,10 @@ storyengine.Story = (function() {
   /** Start tracking an event, triggering it if prerequisites are met
    * @param {storyengine.Event} event The event to be removed
    */
-  constructor.prototype.removeEvent = function(eventSpecifier) {
-    // TODO: Ensure we have the event
+  constructor.prototype.removeEvent = function(event) {
+    if(!this._events[event]) {
+      throw new storyengine.StoryUnknownEventException('removeEvent attempted on unknown event');
+    }
     // TODO: Remove the event
   };
   /** Iterates through the list of events, checking each for their prerequisites 
@@ -59,14 +61,4 @@ storyengine.Story = (function() {
   }
   
   return constructor;
-})();
-
-storyengine.StoryInvalidEventException = (function() {
-  var exception = function(message) {
-    this.message = message;
-  };
-  exception.prototype.toString = function() {
-    return message;
-  };
-  return exception;
 })();
