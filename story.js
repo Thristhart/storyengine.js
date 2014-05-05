@@ -15,6 +15,11 @@ storyengine.Story = (function() {
      * @private
      */
     this._triggerableEvents = [];
+    /** The events tracked by this Story that are not capable of being triggered, but could become capable
+     * @type {string[]}
+     * @private
+     */
+    this._suspendedEvents = [];
     /** The events tracked by this Story that are no longer capable of being triggered
      * @type {string[]}
      * @private
@@ -32,6 +37,7 @@ storyengine.Story = (function() {
       throw new storyengine.StoryInvalidEventException('Event must have a unique identifier');
     }
     this._events[event] = event;
+    
   };
   
   /** Start tracking an event, triggering it if prerequisites are met
