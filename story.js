@@ -53,6 +53,20 @@ storyengine.Story = (function() {
     if(!this._events[id]) {
       throw new storyengine.StoryUnknownEventException('removeEvent attempted on unknown event');
     }
+    var index = this._triggerableEvents.indexOf(id);
+    if(index != -1) {
+      this._triggerableEvents.splice(index, 1);
+    }
+    index = this._suspendedEvents.indexOf(id);
+    if(index != -1) {
+      this._suspendedEvents.splice(index, 1);
+    }
+    index = this._finishedEvents.indexOf(id)
+    if(index != -1) {
+      this._finishedEvents.splice(index, 1);
+    }
+    
+    this._events[id] = null;
   };
   /** Iterates through the list of events, checking each for their prerequisites 
     */
