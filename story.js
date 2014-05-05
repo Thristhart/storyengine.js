@@ -37,7 +37,12 @@ storyengine.Story = (function() {
       throw new storyengine.StoryInvalidEventException('Event must have a unique identifier');
     }
     this._events[event] = event;
-    
+    if(event.suspended) {
+      this._suspendedEvents.push(event.identifier);
+    }
+    else {
+      this._triggerableEvents.push(event.identifier);
+    }
   };
   
   /** Start tracking an event, triggering it if prerequisites are met
