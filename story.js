@@ -36,7 +36,7 @@ storyengine.Story = (function() {
     if(!event.identifier || this._events[event.identifier]) {
       throw new storyengine.StoryInvalidEventException('Event must have a unique identifier');
     }
-    this._events[event] = event;
+    this._events[event.identifier] = event;
     if(event.suspended) {
       this._suspendedEvents.push(event.identifier);
     }
