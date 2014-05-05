@@ -11,12 +11,12 @@ storyengine.Story = (function() {
      */
     this._events = {};
     /** The events tracked by this Story that are capable of being triggered
-     * @type {storyengine.Event[]}
+     * @type {string[]}
      * @private
      */
     this._triggerableEvents = [];
     /** The events tracked by this Story that are no longer capable of being triggered
-     * @type {storyengine.Event[]}
+     * @type {string[]}
      * @private
      */
     this._finishedEvents = [];
