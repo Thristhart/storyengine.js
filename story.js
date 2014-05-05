@@ -49,10 +49,10 @@ storyengine.Story = (function() {
    * @param {storyengine.Event|string} event The event to be removed, or the identifier of the event to be removed
    */
   constructor.prototype.removeEvent = function(event) {
-    if(!this._events[event] || !this._events[event.identifier]) {
+    var id = event.identifier || event;
+    if(!this._events[id]) {
       throw new storyengine.StoryUnknownEventException('removeEvent attempted on unknown event');
     }
-    // TODO: Remove the event
   };
   /** Iterates through the list of events, checking each for their prerequisites 
     */
