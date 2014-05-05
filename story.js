@@ -28,6 +28,9 @@ storyengine.Story = (function() {
     if(!event.prerequisites) {
       throw new storyengine.StoryInvalidEventException('Event must have prerequisites');
     }
+    if(!event.identifier || this._events[event.identifier]) {
+      throw new storyengine.StoryInvalidEventException('Event must have a unique identifier');
+    }
     // TODO: Add the event to internal list
   };
   
