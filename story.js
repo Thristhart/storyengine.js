@@ -31,7 +31,7 @@ storyengine.Story = (function() {
     if(!event.identifier || this._events[event.identifier]) {
       throw new storyengine.StoryInvalidEventException('Event must have a unique identifier');
     }
-    // TODO: Add the event to internal list
+    this._events[event] = event;
   };
   
   /** Start tracking an event, triggering it if prerequisites are met
