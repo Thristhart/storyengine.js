@@ -68,10 +68,30 @@ storyengine.Story = (function() {
     
     this._events[id] = null;
   };
-  /** Iterates through the list of events, checking each for their prerequisites 
+  /** Iterates through the list of events, checking each for their prerequisites. Will only trigger one event per call
+    * @returns {boolean} Whether an event was triggered
     */
   constructor.prototype.checkEventTriggers = function() {
-    // TODO: iterate through each triggerable event and check its trigger
+    for(var i = 0; i < this._triggerableEvents.length; i++) {
+      if(this._triggerableEvents[i].checkTrigger()) {
+        this._doEventTrigger(this._triggerableEvents[i]);
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  constructor.prototype._doEventTrigger = function(event) {
+    event.trigger(this);
+    if(event.done) {
+      this._finishedEvents.push(event);
+    }
+    if(event.suspended) {
+      this._suspendedEvents.push(event);
+    }
+    if(event.suspended || event.done) {
+      this._triggerableEvents.slice(this._triggerableEvents.indexOf(event));
+    }
   }
   
   return constructor;
